@@ -80,15 +80,18 @@ def init_superuser():
         "Super user initialized. email: admin@ragflow.io, password: admin. Changing the password after login is strongly recommended.")
 
     chat_mdl = LLMBundle(tenant["id"], LLMType.CHAT, tenant["llm_id"])
-    msg = chat_mdl.chat(system="", history=[
-        {"role": "user", "content": "Hello!"}], gen_conf={})
+    print("【Lynn1-Debug】chat init ok!",tenant["id"], LLMType.CHAT, tenant["llm_id"])
+    msg = chat_mdl.chat(system="", history=[{"role": "user", "content": "Hello!"}], gen_conf={})
+    print("【Lynn1-Debug】chat test:",msg)
     if msg.find("ERROR: ") == 0:
         logging.error(
             "'{}' dosen't work. {}".format(
                 tenant["llm_id"],
                 msg))
     embd_mdl = LLMBundle(tenant["id"], LLMType.EMBEDDING, tenant["embd_id"])
+    print("【Lynn1-Debug】embd init ok!",tenant["id"], LLMType.EMBEDDING, tenant["embd_id"])
     v, c = embd_mdl.encode(["Hello!"])
+    print("【Lynn1-Debug】embd test:",v)
     if c == 0:
         logging.error(
             "'{}' dosen't work!".format(
@@ -180,8 +183,8 @@ def init_web_data():
     start_time = time.time()
 
     init_llm_factory()
-    # if not UserService.get_all().count():
-    #    init_superuser()
+    if not UserService.get_all().count():
+       init_superuser()
 
     add_graph_templates()
     logging.info("init web data success:{}".format(time.time() - start_time))

@@ -90,6 +90,7 @@ class RecursiveAbstractiveProcessing4TreeOrganizedRetrieval:
                 embds, _ = self._embd_model.encode([cnt])
                 with lock:
                     chunks.append((cnt, self._embedding_encode(cnt)))
+                    print(f"【Lynn1-Debug】RAPTOR SUM append! ck_idx={ck_idx} len(chunks)={len(chunks)}")
             except Exception as e:
                 logging.exception("summarize got exception")
                 return e
@@ -130,6 +131,7 @@ class RecursiveAbstractiveProcessing4TreeOrganizedRetrieval:
                 logging.debug(str([t.result() for t in threads]))
 
             assert len(chunks) - end == n_clusters, "{} vs. {}".format(len(chunks) - end, n_clusters)
+            print(f"【Lynn1-Debug】len(chunks)={len(chunks)} end={end} start={start} n_clusters={n_clusters}")
             labels.extend(lbls)
             layers.append((end, len(chunks)))
             if callback:

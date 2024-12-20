@@ -436,6 +436,7 @@ def do_handle_task(task):
 
             # run RAPTOR
             chunks, token_count, vector_size = run_raptor(task, chat_model, embedding_model, progress_callback)
+            print(f"【Lynn1-Debug】RAPTOR Finished! return new_cks:{len(chunks)}, tk_count:{token_count}, vector_size:{vector_size}")
         except TaskCanceledException:
             raise
         except Exception as e:
@@ -594,7 +595,7 @@ def main():
  / / / /_/ (__  ) ,<    / /____>  </  __/ /__/ /_/ / /_/ /_/ / /    
 /_/  \__,_/____/_/|_|  /_____/_/|_|\___/\___/\__,_/\__/\____/_/                               
     """)
-    logging.info(f'TaskExecutor: RAGFlow version: {get_ragflow_version()}')
+    logging.info(f'TaskExecutor: RAGFlow version: {get_ragflow_version()}-Lynn1')
     settings.init_settings()
     print_rag_settings()
     background_thread = threading.Thread(target=report_status)

@@ -51,10 +51,9 @@ export default {
       nicknamePlaceholder: 'Please input nickname',
       register: 'Create an account',
       continue: 'Continue',
-      title: 'Start building your smart assistants.',
-      description:
-        'Sign up for free to explore top RAG technology. Create knowledge bases and AIs to empower your business.',
-      review: 'from 500+ reviews',
+      title: '',
+      description: '',
+      review: '',
     },
     header: {
       knowledgeBase: 'Knowledge Base',
@@ -430,7 +429,8 @@ The above is the content you need to summarize.`,
       partialTitle: 'Partial Embed',
       extensionTitle: 'Chrome Extension',
       tokenError: 'Please create API Token first!',
-      betaError: 'Please acquire a RAGFlow API key from the System Settings page first.',
+      betaError:
+        'Please acquire a RAGFlow API key from the System Settings page first.',
       searching: 'Searching...',
       parsing: 'Parsing',
       uploading: 'Uploading',
