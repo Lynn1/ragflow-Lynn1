@@ -20,12 +20,14 @@ import re
 from rag.utils.doc_store_conn import MatchTextExpr
 
 from rag.nlp import rag_tokenizer, term_weight, synonym
+from rag.utils.redis_conn import REDIS_CONN
 
 
 class FulltextQueryer:
     def __init__(self):
         self.tw = term_weight.Dealer()
-        self.syn = synonym.Dealer()
+        # self.syn = synonym.Dealer()
+        self.syn = synonym.Dealer(redis=REDIS_CONN)
         self.query_fields = [
             "title_tks^10",
             "title_sm_tks^5",
