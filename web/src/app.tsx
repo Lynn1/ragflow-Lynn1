@@ -1,6 +1,5 @@
 import i18n from '@/locales/config';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { App, ConfigProvider, ConfigProviderProps, theme } from 'antd';
 import enUS from 'antd/locale/en_US';
 import vi_VN from 'antd/locale/vi_VN';
@@ -63,7 +62,7 @@ function Root({ children }: React.PropsWithChildren) {
       >
         <App> {children}</App>
       </ConfigProvider>
-      <ReactQueryDevtools buttonPosition={'bottom-left'} />
+      {/*<ReactQueryDevtools buttonPosition={'top-right'} />*/}
     </>
   );
 }
