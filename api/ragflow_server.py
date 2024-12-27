@@ -54,15 +54,12 @@ def update_progress():
 
 if __name__ == '__main__':
     logging.info(r"""
-        ____   ___    ______ ______ __               
-       / __ \ /   |  / ____// ____// /____  _      __
-      / /_/ // /| | / / __ / /_   / // __ \| | /| / /
-     / _, _// ___ |/ /_/ // __/  / // /_/ /| |/ |/ / 
-    /_/ |_|/_/  |_|\____//_/    /_/ \____/ |__/|__/                             
-
-    """)
+    ###################欢迎使用知识库 ##################
+    This is a branch forked from "infiniflow/ragflow", 
+    where Lynn1 made some bug fixes and customizations.
+    ###################################################""")
     logging.info(
-        f'RAGFlow version: {get_ragflow_version()}'
+        f'Branch base version: {get_ragflow_version()}-lynn1'
     )
     logging.info(
         f'project base: {utils.file_utils.get_project_base_directory()}'

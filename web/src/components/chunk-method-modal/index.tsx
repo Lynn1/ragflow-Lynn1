@@ -281,7 +281,7 @@ const ChunkMethodModal: React.FC<IProps> = ({
         {showMaxTokenNumber && (
           <>
             <MaxTokenNumber
-              max={selectedTag === 'knowledge_graph' ? 8192 * 2 : 2048}
+              max={selectedTag === 'knowledge_graph' ? 8192 * 2 : 32768}
             ></MaxTokenNumber>
             <Delimiter></Delimiter>
           </>

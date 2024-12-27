@@ -85,7 +85,7 @@ class Dealer:
         except Exception:
             logging.warning("Load ner.json FAIL!")
         try:
-            self.df = load_dict(os.path.join(fnm, "term.freq"))
+            self.df = load_dict(os.path.join(fnm, "huqie.txt")) #term.freq
         except Exception:
             logging.warning("Load term.freq FAIL!")
 
