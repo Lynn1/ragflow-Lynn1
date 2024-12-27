@@ -436,7 +436,7 @@ def do_handle_task(task):
 
             # run RAPTOR
             chunks, token_count, vector_size = run_raptor(task, chat_model, embedding_model, progress_callback)
-            print(f"【Lynn1-Debug】RAPTOR Finished! return new_cks:{len(chunks)}, tk_count:{token_count}, vector_size:{vector_size}")
+            logging.info(f"【Lynn1-Debug】RAPTOR Finished! return new_cks:{len(chunks)}, tk_count:{token_count}, vector_size:{vector_size}")
         except TaskCanceledException:
             raise
         except Exception as e:

@@ -80,18 +80,18 @@ def init_superuser():
         "Super user initialized. email: admin@ragflow.io, password: admin. Changing the password after login is strongly recommended.")
 
     chat_mdl = LLMBundle(tenant["id"], LLMType.CHAT, tenant["llm_id"])
-    print("【Lynn1-Debug】chat init ok!",tenant["id"], LLMType.CHAT, tenant["llm_id"])
+    logging.info("【Lynn1-Debug】chat init ok!,{}, {}, {}".format(tenant["id"], LLMType.CHAT, tenant["llm_id"]))
     msg = chat_mdl.chat(system="", history=[{"role": "user", "content": "Hello!"}], gen_conf={})
-    print("【Lynn1-Debug】chat test:",msg)
+    logging.info("【Lynn1-Debug】chat test: {}".format(msg))
     if msg.find("ERROR: ") == 0:
         logging.error(
             "'{}' dosen't work. {}".format(
                 tenant["llm_id"],
                 msg))
     embd_mdl = LLMBundle(tenant["id"], LLMType.EMBEDDING, tenant["embd_id"])
-    print("【Lynn1-Debug】embd init ok!",tenant["id"], LLMType.EMBEDDING, tenant["embd_id"])
+    logging.info("【Lynn1-Debug】embd init ok! {}, {}, {}".format(tenant["id"], LLMType.EMBEDDING, tenant["embd_id"]))
     v, c = embd_mdl.encode(["Hello!"])
-    print("【Lynn1-Debug】embd test:",v)
+    logging.info("【Lynn1-Debug】embd test: {}".format(v))
     if c == 0:
         logging.error(
             "'{}' dosen't work!".format(

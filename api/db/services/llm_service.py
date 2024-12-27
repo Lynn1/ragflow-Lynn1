@@ -283,7 +283,9 @@ class LLMBundle(object):
             yield chunk
 
     def chat(self, system, history, gen_conf):
+        logging.info("【Lynn1-Debug】LLMBundle.chat query: {}, {}, {}".format(system,history,gen_conf)) #######
         txt, used_tokens = self.mdl.chat(system, history, gen_conf)
+        logging.info("【Lynn1-Debug】LLMBundle.chat ans: {}".format(txt)) #######
         if isinstance(txt, int) and not TenantLLMService.increase_usage(
                 self.tenant_id, self.llm_type, used_tokens, self.llm_name):
             logging.error(
@@ -291,6 +293,8 @@ class LLMBundle(object):
         return txt
 
     def chat_streamly(self, system, history, gen_conf):
+        logging.info("【Lynn1-Debug】LLMBundle.chat_streamly query: {}, {}, {}".format(system,history,gen_conf)) #######
+        ans = ""
         for txt in self.mdl.chat_streamly(system, history, gen_conf):
             if isinstance(txt, int):
                 if not TenantLLMService.increase_usage(
@@ -298,4 +302,6 @@ class LLMBundle(object):
                     logging.error(
                         "LLMBundle.chat_streamly can't update token usage for {}/CHAT llm_name: {}, content: {}".format(self.tenant_id, self.llm_name, txt))
                 return
+            ans += txt
             yield txt
+        logging.info("【Lynn1-Debug】LLMBundle.chat_streamly ans: {}".format(ans)) #######
