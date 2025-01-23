@@ -44,7 +44,8 @@ const SideBar = () => {
         <Flex justify={'space-between'}>
           {t(label)}
           <span className={styles.version}>
-            {label === 'system' && version}
+            {/*{label === 'system' && version}*/}
+            {label === 'system' && 'updated by: Lynn1 2025-01'}
           </span>
         </Flex>
       ),

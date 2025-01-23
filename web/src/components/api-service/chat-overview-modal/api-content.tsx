@@ -1,6 +1,4 @@
 import { useSetModalState, useTranslate } from '@/hooks/common-hooks';
-import apiDoc from '@parent/docs/references/http_api_reference.md';
-import MarkdownPreview from '@uiw/react-markdown-preview';
 import { Button, Card, Flex, Space } from 'antd';
 import ChatApiKeyModal from '../chat-api-key-modal';
 import { usePreviewChat } from '../hooks';
@@ -42,7 +40,7 @@ const ApiContent = ({
             </Flex>
           </Card>
         )}
-        <MarkdownPreview source={apiDoc}></MarkdownPreview>
+        {/*<MarkdownPreview source={apiDoc}></MarkdownPreview>*/}
       </Flex>
       {apiKeyVisible && (
         <ChatApiKeyModal
